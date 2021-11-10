@@ -10,9 +10,9 @@ import java.util.List;
 public class User extends GenericEntity {
 
     @Column(nullable = false, unique = true, length = 50)
-    private String userName;
+    protected String userName;
     @Column(columnDefinition = "TEXT", length = 255)
-    private String password;
+    protected String password;
     @Column(columnDefinition = "TEXT", length = 255)
     private String oldPassword;
 
