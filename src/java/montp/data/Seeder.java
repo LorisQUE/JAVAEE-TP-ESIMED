@@ -2,6 +2,8 @@ package montp.data;
 
 import montp.data.model.security.Group;
 import montp.data.model.security.User;
+import montp.data.model.ressource.RessourceType;
+import montp.services.RessourceTypeService;
 import montp.services.UserService;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +21,7 @@ public class Seeder {
     
     @Inject
     private UserService userService;
+    private RessourceTypeService ressourceTypeService;
 
     @PersistenceContext
     private EntityManager em;
@@ -30,15 +33,20 @@ public class Seeder {
             em.persist(groupUser);
             Group groupAdmin = new Group("ADMIN");
             em.persist(groupAdmin);
+
             User userUser1 = new User("user1", "user1");
             List<Group> groupes = new ArrayList<>();
             groupes.add(groupUser);
             userUser1.setGroups(groupes);
             userService.insert(userUser1);
+
             User userAdmin = new User("admin", "admin");
             groupes.add(groupAdmin);
             userAdmin.setGroups(groupes);
             userService.insert(userAdmin);
+
+            RessourceType ressourceType = new RessourceType("Voiture #1");
+            em.persist(ressourceType);
         }
     }
 
