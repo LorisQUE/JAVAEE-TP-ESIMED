@@ -1,5 +1,6 @@
 package montp.data;
 
+import montp.data.model.ressource.Ressource;
 import montp.data.model.security.Group;
 import montp.data.model.security.User;
 import montp.data.model.ressource.RessourceType;
@@ -45,8 +46,24 @@ public class Seeder {
             userAdmin.setGroups(groupes);
             userService.insert(userAdmin);
 
-            RessourceType ressourceType = new RessourceType("Voiture #1");
-            em.persist(ressourceType);
+            RessourceType typeVehicule = new RessourceType("Vehicule");
+            em.persist(typeVehicule);
+
+            Ressource vehiculeUn = new Ressource("Peugeot 206 Blanche", typeVehicule);
+            em.persist(vehiculeUn);
+
+            Ressource vehiculeDeux = new Ressource("Renault C15 Blanc", typeVehicule);
+            em.persist(vehiculeDeux);
+
+            RessourceType typeSalle = new RessourceType("Salle");
+            em.persist(typeSalle);
+
+            Ressource salleUn = new Ressource("Salle de Réunion", typeSalle);
+            em.persist(salleUn);
+
+            Ressource salleDeux = new Ressource("Salle de Formation", typeSalle);
+            em.persist(salleDeux);
+
         }
     }
 
