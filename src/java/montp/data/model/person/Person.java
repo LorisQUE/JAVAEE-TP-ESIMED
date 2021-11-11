@@ -28,6 +28,8 @@ public class Person extends User {
     private Boolean isManager;
     @OneToMany(mappedBy = "manager")
     private List<Ressource> ressources;
+    // Si isManager, alors ressources typesRessources et persons peuvent être renseigné
+    // Pour l'instant que des ressoucres peuvent êtrer gérée, il faudra rajouter les autres champs
 
     public String getName() {
         return lastname;

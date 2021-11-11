@@ -28,4 +28,5 @@ public class RessourceType extends GenericEntity {
     public void setLabel(String label) { this.label = label; }
 
     public List<Ressource> getRessources() { return ressources; }
+
 }

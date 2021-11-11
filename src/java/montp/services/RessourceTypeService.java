@@ -11,7 +11,7 @@ public class RessourceTypeService extends GenericService<RessourceType, Ressourc
 
     @Transactional
     public void insert(RessourceType ressourceType) {
-        ressourceType.setLabel(ressourceType.getLabel());
+        ressourceType.setLabel(ressourceType.getLabel().trim());
         super.insert(ressourceType);
     }
 }

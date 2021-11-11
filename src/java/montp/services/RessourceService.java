@@ -12,7 +12,10 @@ public class RessourceService extends GenericService<Ressource, RessourceDAO>{
 
     @Transactional
     public void insert(Ressource ressource) {
-        ressource.setLabel(ressource.getLabel());
+        ressource.setLabel(ressource.getLabel().trim());
+        //ressource.setCapacity(ressource.getCapacity());
+        //ressource.setManager(ressource.getManager());
+        //ressource.setType(ressource.getType());
         super.insert(ressource);
     }
 
