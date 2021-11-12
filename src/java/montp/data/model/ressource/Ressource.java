@@ -11,16 +11,14 @@ public class Ressource extends GenericEntity {
 
     public Ressource () { }
 
-    public Ressource(String label, Integer capacity, Boolean isShareable, RessourceType type, Person manager) {
+    public Ressource(String label, Boolean isShareable, RessourceType type, Person manager) {
         this.label = label;
-        this.capacity = capacity;
         this.isShareable = isShareable;
         this.type = type;
         this.manager = manager;
     }
 
     private String label;
-    private Integer capacity;
     private Boolean isShareable;
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -42,12 +40,11 @@ public class Ressource extends GenericEntity {
         this.type = type;
     }
 
-    public Integer getCapacity() { return capacity; }
-
-    public void setCapacity(Integer capacity) { this.capacity = capacity; }
-
     public Person getManager() { return manager; }
 
     public void setManager(Person manager) { this.manager = manager; }
 
+    public Boolean getShareable() { return isShareable; }
+
+    public void setShareable(Boolean shareable) { isShareable = shareable; }
 }

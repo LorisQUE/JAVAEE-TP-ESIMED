@@ -15,13 +15,15 @@ public class RessourceType extends GenericEntity {
     public RessourceType() {
     }
 
-    public RessourceType(String label) {
+    public RessourceType(String label, Integer capacity) {
         this.label = label;
+        this.capacity = capacity;
     }
 
     private String label;
     @OneToMany(mappedBy = "type")
     private List<Ressource> ressources;
+    private Integer capacity;
 
     public String getLabel() { return label; }
 
@@ -29,4 +31,7 @@ public class RessourceType extends GenericEntity {
 
     public List<Ressource> getRessources() { return ressources; }
 
+    public Integer getCapacity() { return capacity; }
+
+    public void setCapacity(Integer capacity) { this.capacity = capacity; }
 }

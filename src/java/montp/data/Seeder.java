@@ -70,22 +70,22 @@ public class Seeder {
                     false);
             personService.insert(personDeux);
 
-            RessourceType typeVehicule = new RessourceType("Vehicule");
+            RessourceType typeVehicule = new RessourceType("Vehicule", 5);
             ressourceTypeService.insert(typeVehicule);
 
-            Ressource vehiculeUn = new Ressource("Peugeot 206 Blanche", null, false, typeVehicule, personDeux);
+            Ressource vehiculeUn = new Ressource("Peugeot 206 Blanche", false, typeVehicule, personDeux);
             ressourceService.insert(vehiculeUn);
 
-            Ressource vehiculeDeux = new Ressource("Renault C15 Blanc", null, false, typeVehicule, personUn);
+            Ressource vehiculeDeux = new Ressource("Renault C15 Blanc", false, typeVehicule, personUn);
             ressourceService.insert(vehiculeDeux);
 
-            RessourceType typeSalle = new RessourceType("Salle");
+            RessourceType typeSalle = new RessourceType("Salle", 10);
             ressourceTypeService.insert(typeSalle);
 
-            Ressource salleUn = new Ressource("Salle de Réunion", 15, false, typeSalle, personUn);
+            Ressource salleUn = new Ressource("Salle de Réunion", true, typeSalle, personUn);
             ressourceService.insert(salleUn);
 
-            Ressource salleDeux = new Ressource("Salle de Formation", 10, false, typeSalle, personDeux);
+            Ressource salleDeux = new Ressource("Salle de Formation", true, typeSalle, personDeux);
             ressourceService.insert(salleDeux);
 
             Reservation reservationUne = new Reservation(personUn, salleUn, new Date(), new Date(), 10);
