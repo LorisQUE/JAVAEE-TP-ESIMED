@@ -15,6 +15,10 @@ public class RessourceTypeService extends GenericService<RessourceType, Ressourc
         return dao.getRessourceTypes();
     }
 
+    public boolean canDelete(RessourceType ressourceType) {
+        return ressourceType.getRessources().size() == 0;
+    }
+
     @Transactional
     public void insert(RessourceType ressourceType) {
         ressourceType.setLabel(ressourceType.getLabel().trim());

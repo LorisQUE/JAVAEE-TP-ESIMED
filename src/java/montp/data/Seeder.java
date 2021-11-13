@@ -70,8 +70,12 @@ public class Seeder {
                     false);
             personService.insert(personDeux);
 
+            RessourceType typeRien = new RessourceType("Rien", null);
+            ressourceTypeService.insert(typeRien);
+
             RessourceType typeVehicule = new RessourceType("Vehicule", 5);
             ressourceTypeService.insert(typeVehicule);
+
 
             Ressource vehiculeUn = new Ressource("Peugeot 206 Blanche", false, typeVehicule, personDeux);
             ressourceService.insert(vehiculeUn);

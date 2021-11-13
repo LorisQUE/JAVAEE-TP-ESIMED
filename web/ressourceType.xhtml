@@ -7,20 +7,45 @@
     <ui:define name="content">
 
         <p:card>
-            <f:facet name="title">#{msg['app.ressourcetype.listTitle']}</f:facet>
-            <p:dataTable value="#{ressourcetype.ressourceTypes}"
-                         var="ressourceType"
-                         sortBy="#{ressourceType.label}">
-                <p:column headerText="#{msg['app.ressourcetype.label']}">
-                    #{ressourceType}
-                </p:column>
-                <p:column headerText="#{msg['app.ressourcetype.capacity']}">
-                    #{ressourceType.getCapacity()}
-                </p:column>
-                <p:column headerText="#{msg['app.ressourcetype.nbRes']}">
-                    #{ressourceType.getRessources().size()}
-                </p:column>
-            </p:dataTable>
+
+                <f:facet name="title">#{msg['app.ressourcetype.listTitle']}</f:facet>
+            <h:form>
+                <p:dataTable value="#{ressourcetype.ressourceTypes}"
+                             var="ressType"
+                             sortBy="#{ressType.label}">
+                    <p:column headerText="#{msg['app.ressourcetype.label']}">
+                        #{ressType}
+                    </p:column>
+                    <p:column headerText="#{msg['app.ressourcetype.capacity']}">
+                        #{ressType.capacity == null ? '-' : ressType.capacity}
+                    </p:column>
+                    <p:column headerText="#{msg['app.ressourcetype.nbRes']}">
+                        #{ressType.getRessources().size()}
+                    </p:column>
+                    <p:column headerText="#{msg['app.actions']}">
+                        <p:commandButton
+                                icon="fa fa-trash"
+                                styleClass="dataTableActions"
+                                title="#{msg['app.delete']}"
+                                rendered="#{ressourcetype.canDelete(ressType)}"
+                                actionListener="#{ressourcetype.deleteRessourceType(ressType)}"
+                                update="@form"
+                                process="@this"
+                        >
+                            <p:confirm
+                                    header="#{msg['app.delete']}"
+                                    message="#{msg['app.delete']}"
+                                    icon="fa fa-question-circle"
+                            />
+                        </p:commandButton>
+
+                    </p:column>
+                    <f:facet name="footer">
+                        <h:outputFormat value="#{msg['app.ressourcetype.count']}"><f:param value="#{ressourcetype.ressourceTypes.size()}"/></h:outputFormat>
+                    </f:facet>
+                </p:dataTable>
+
+            </h:form>
         </p:card>
 
     </ui:define>

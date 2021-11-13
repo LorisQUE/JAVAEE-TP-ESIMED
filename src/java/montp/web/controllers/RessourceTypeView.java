@@ -26,4 +26,12 @@ public class RessourceTypeView implements Serializable {
         return ressourceTypeService.getRessourceTypes();
     }
 
+    public boolean canDelete(RessourceType ressourceType) {
+        return ressourceTypeService.canDelete(ressourceType);
+    }
+
+    public void deleteRessourceType(RessourceType ressourceType) {
+        if(ressourceType != null)
+            ressourceTypeService.delete(ressourceType);
+    }
 }
