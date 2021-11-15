@@ -47,4 +47,9 @@ public class Ressource extends GenericEntity {
     public Boolean getShareable() { return isShareable; }
 
     public void setShareable(Boolean shareable) { isShareable = shareable; }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

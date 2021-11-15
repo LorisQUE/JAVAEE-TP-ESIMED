@@ -7,11 +7,8 @@
     <ui:define name="content">
 
         <p:card>
-
                 <f:facet name="title">#{msg['app.ressourcetype.listTitle']}</f:facet>
-
             <p:growl/>
-
             <h:panelGrid columns="3" cellpadding="5">
                 <p:commandButton icon="fa fa-plus"
                                  value="#{msg['app.ressourcetype.new']}"
@@ -20,7 +17,6 @@
                                  oncomplete="PF('dlgEditRessourceType').show()"
                                  process="@this"/>
             </h:panelGrid>
-
             <h:form id="formDataTableRessourceType">
                 <p:dataTable id="dataTableRessourceType"
                             value="#{ressourcetype.ressourceTypes}"
@@ -44,6 +40,15 @@
                     </p:column>
                     <p:column headerText="#{msg['app.actions']}">
                         <p:growl/>
+                        <p:button
+                                styleClass="btn-space"
+                                icon="fa fa-sign-in"
+                                includeViewParams="true"
+                                outcome="ressource"
+                                title="#{msg['app.ressourcetype.goToDetails']}">
+                            <!--// url + ?typeId=#{ressType.id}-->
+                        </p:button>
+
                         <p:commandButton
                                 icon="fa fa-trash"
                                 styleClass="dataTableActions"
@@ -59,7 +64,6 @@
                                     icon="fa fa-question-circle"
                             />
                         </p:commandButton>
-
                     </p:column>
                     <f:facet name="footer">
                         <h:outputFormat value="#{msg['app.ressourcetype.count']}"><f:param value="#{ressourcetype.ressourceTypes.size()}"/></h:outputFormat>

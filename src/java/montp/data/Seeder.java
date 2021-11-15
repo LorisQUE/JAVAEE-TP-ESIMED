@@ -51,7 +51,7 @@ public class Seeder {
             userAdmin.setGroups(groupes);
             userService.insert(userAdmin);
 
-            // /!\ On ne précise jamais le grp de sécurité des persons, c'est à faire
+            // TODO: On ne précise jamais le grp de sécurité des persons, c'est à faire
             Person personUn = new Person(
                     "CARTIER",
                     "Jacques",

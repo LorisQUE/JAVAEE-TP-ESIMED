@@ -13,3 +13,7 @@ body {
 .table-no-header thead {
     display: none;
 }
+
+.btn-space {
+    margin-right: .3em !important;
+}

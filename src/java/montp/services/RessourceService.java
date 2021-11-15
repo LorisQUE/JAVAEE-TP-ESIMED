@@ -6,6 +6,7 @@ import montp.data.model.ressource.RessourceType;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @ApplicationScoped
 public class RessourceService extends GenericService<Ressource, RessourceDAO>{
@@ -19,4 +20,8 @@ public class RessourceService extends GenericService<Ressource, RessourceDAO>{
         super.insert(ressource);
     }
 
+    public List<Ressource> getAll(){
+        return dao.getAll();
+    }
+    public List<Ressource> getAllFromType(long id){ return dao.getAllFromType(id); }
 }

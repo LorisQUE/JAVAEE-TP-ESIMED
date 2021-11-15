@@ -31,7 +31,7 @@ public class IndexView implements Serializable {
 
     @PostConstruct
     public void init() {
-        Logger.log(Logger.LogLevel.INFO, IndexView.class.getSimpleName(), "initializing view controller");
+        Logger.log(Logger.LogLevel.INFO, IndexView.class.getSimpleName(), "initializing view controller (Index !)");
     }
 
     public String getHello() {

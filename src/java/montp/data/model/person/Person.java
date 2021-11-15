@@ -56,4 +56,9 @@ public class Person extends User {
     public Boolean getManager() { return isManager; }
 
     public void setManager(Boolean manager) { isManager = manager; }
+
+    @Override
+    public String toString() {
+        return firstname + " '" + userName + "' " + lastname;
+    }
 }
