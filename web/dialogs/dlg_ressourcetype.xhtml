@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:dialog widgetVar="dlgEditRessourceType"
+              id="dlgEditRessourceType"
+              header="#{ressourceTypeDialog.instance.id == null ? msg['app.ressourcetype.newTitle'] : ressourceTypeDialog.editTitle }"
+              modal="true"
+              closeOnEscape="true">
+    <p> #{ressourceTypeDialog.instance.id}</p>
+        <h:form id="frmEditClub" rendered="#{ressourceTypeDialog.instance != null}">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="label" value="#{msg['app.ressourcetype.label']}"/>
+                <p:inputText id="label" value="#{ressourceTypeDialog.instance.label}"
+                             required="true"
+                             requiredMessage="#{msg['app.ressourcetype.labelRequired']}"/>
+                <p:outputLabel for="capacity" value="#{msg['app.ressourcetype.capacity']}"/>
+                <p:inputText id="capacity" value="#{ressourceTypeDialog.instance.capacity}"/>
+            </h:panelGrid>
+            <p:growl/>
+            <p:commandButton value="#{msg['app.save']}"
+                             action="#{ressourceTypeDialog.save}"
+                             oncomplete="if (!args.validationFailed) PF('dlgEditRessourceType').hide()"
+                             update="@form,formDataTableRessourceType:dataTableRessourceType"/>
+        </h:form>
+
+    </p:dialog>
+
+</ui:composition>

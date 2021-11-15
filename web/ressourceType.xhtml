@@ -9,12 +9,32 @@
         <p:card>
 
                 <f:facet name="title">#{msg['app.ressourcetype.listTitle']}</f:facet>
-            <h:form>
-                <p:dataTable value="#{ressourcetype.ressourceTypes}"
+
+            <p:growl/>
+
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:commandButton icon="fa fa-plus"
+                                 value="#{msg['app.ressourcetype.new']}"
+                                 actionListener="#{ressourceTypeDialog.create(ressourcetype)}"
+                                 update="dlgEditRessourceType"
+                                 oncomplete="PF('dlgEditRessourceType').show()"
+                                 process="@this"/>
+            </h:panelGrid>
+
+            <h:form id="formDataTableRessourceType">
+                <p:dataTable id="dataTableRessourceType"
+                            value="#{ressourcetype.ressourceTypes}"
                              var="ressType"
                              sortBy="#{ressType.label}">
                     <p:column headerText="#{msg['app.ressourcetype.label']}">
-                        #{ressType}
+                        <p:commandLink id="ajax"
+                                       update="@form,dlgEditRessourceType"
+                                       action="#{ressourcetype.edit(ressType)}"
+                                       process="@this"
+                                       oncomplete="PF('dlgEditRessourceType').show()"
+                        >
+                            <h:outputText value="#{ressType}"/>
+                        </p:commandLink>
                     </p:column>
                     <p:column headerText="#{msg['app.ressourcetype.capacity']}">
                         #{ressType.capacity == null ? '-' : ressType.capacity}
@@ -48,6 +68,7 @@
             </h:form>
         </p:card>
 
+        <ui:include src="dialogs/dlg_ressourcetype.xhtml"/>
     </ui:define>
 </ui:composition>
 
