@@ -8,7 +8,7 @@
               header="#{ressourceTypeDialog.instance.id == null ? msg['app.ressourcetype.newTitle'] : ressourceTypeDialog.editTitle }"
               modal="true"
               closeOnEscape="true">
-    <p> #{ressourceTypeDialog.instance.id}</p>
+
         <h:form id="frmEditClub" rendered="#{ressourceTypeDialog.instance != null}">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="label" value="#{msg['app.ressourcetype.label']}"/>

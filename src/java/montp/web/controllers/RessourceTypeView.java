@@ -1,6 +1,7 @@
 package montp.web.controllers;
 
 import montp.data.model.ressource.RessourceType;
+import montp.locale.Messages;
 import montp.services.RessourceTypeService;
 import montp.tools.Logger;
 import montp.web.FacesTools;
@@ -19,6 +20,7 @@ public class RessourceTypeView implements Serializable {
 
     @Inject private RessourceTypeService ressourceTypeService;
     @Inject private RessourceTypeDialog ressourceTypeDialog;
+    @Inject private Messages message;
     private List<RessourceType> datas;
 
     @PostConstruct
@@ -28,7 +30,6 @@ public class RessourceTypeView implements Serializable {
     }
 
     public List<RessourceType> getRessourceTypes() {
-        //return ressourceTypeService.getRessourceTypes();
         return datas;
     }
 
@@ -37,8 +38,13 @@ public class RessourceTypeView implements Serializable {
     }
 
     public void deleteRessourceType(RessourceType ressourceType) {
-        if(ressourceType != null)
+        if(ressourceType != null) {
             ressourceTypeService.delete(ressourceType);
+            datas.remove(ressourceType);
+            FacesTools.addMessage(FacesMessage.SEVERITY_INFO, message.get("app.delete"));
+        } else {
+            FacesTools.addMessage(FacesMessage.SEVERITY_ERROR, message.get("app.delete.error"));
+        }
     }
 
     public void edit(RessourceType ressourceType) {
