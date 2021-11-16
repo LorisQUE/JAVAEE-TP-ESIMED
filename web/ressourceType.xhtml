@@ -29,7 +29,7 @@
                                        process="@this"
                                        oncomplete="PF('dlgEditRessourceType').show()"
                         >
-                            <h:outputText value="#{ressType}"/>
+                            <h:outputText value="#{ressType.toString()}"/>
                         </p:commandLink>
                     </p:column>
                     <p:column headerText="#{msg['app.ressourcetype.capacity']}">
@@ -40,13 +40,15 @@
                     </p:column>
                     <p:column headerText="#{msg['app.actions']}">
                         <p:growl/>
-                        <p:button
-                                styleClass="btn-space"
+
+                        <p:linkButton
+                                outcome="ressource"
                                 icon="fa fa-sign-in"
-                                includeViewParams="true"
-                                outcome="ressource?typeId=#{ressType.id}"
-                                title="#{msg['app.ressourcetype.goToDetails']}">
-                        </p:button>
+                                styleClass="btn-space"
+                                title="#{msg['app.ressourcetype.goToDetails']}"
+                        >
+                            <f:param name="typeId" value="#{ressType.id}"/>
+                        </p:linkButton>
 
                         <p:commandButton
                                 icon="fa fa-trash"
@@ -71,6 +73,10 @@
 
             </h:form>
         </p:card>
+
+        <p:button outcome="index" value="#{msg['app.return']}">
+
+        </p:button>
 
         <ui:include src="dialogs/dlg_ressourcetype.xhtml"/>
     </ui:define>

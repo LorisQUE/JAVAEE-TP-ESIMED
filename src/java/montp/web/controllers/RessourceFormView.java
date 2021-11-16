@@ -28,6 +28,8 @@ public class RessourceFormView implements Serializable {
 
     @PostConstruct
     public void init() {
+        if(instance == null)
+            instanciate();
         persons = personService.getAll();
         Logger.log(Logger.LogLevel.INFO, RessourceView.class.getSimpleName(), "Init de la vue");
     }
@@ -38,7 +40,7 @@ public class RessourceFormView implements Serializable {
 
     // TODO : Gérer la redirection sur la liste des ressources
     public void save() {
-        if (instance.getId() == null) {
+        if (instance.getId() == null || instance.getId() == 0) {
             service.insert(instance);
             FacesTools.addMessage(FacesMessage.SEVERITY_INFO, message.get("app.added"));
         } else {

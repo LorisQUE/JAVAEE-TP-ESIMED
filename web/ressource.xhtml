@@ -4,10 +4,17 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="./layout.xhtml">
+    <f:metadata>
+        <f:viewParam name="typeId" value="#{ressource.type}"/>
+    </f:metadata>
     <ui:define name="content">
         <p:card>
             <f:facet name="title">#{msg['app.ressource.listTitle']}</f:facet>
             <p:growl/>
+            <p:linkButton outcome="ressource_form" icon="fa fa-plus">
+                #{msg['app.ressource.new']}
+            </p:linkButton>
+
             <h:form  id="formDataTableRessource">
                 <p:dataTable id="dataTableRessource"
                             value="#{ressource.ressources}"
@@ -24,10 +31,24 @@
                     </p:column>
                     <p:column headerText="#{msg['app.actions']}">
 
-                        <p:linkButton outcome="ressource_form" icon="fa fa-edit">
+                        <p:linkButton outcome="ressource_form" icon="fa fa-edit" styleClass="btn-space">
                             <f:param name="ressourceId" value="#{ress.id}"/>
                         </p:linkButton>
 
+                        <p:commandButton
+                                icon="fa fa-trash"
+                                styleClass="dataTableActions"
+                                title="#{msg['app.deleteBtn']}"
+                                actionListener="#{ressource.delete(ress)}"
+                                update="@form,formDataTableRessource:dataTableRessource"
+                                process="@this"
+                        >
+                            <p:confirm
+                                    header="#{msg['app.deleteBtn']}"
+                                    message="#{msg['app.deleteConfirm']}"
+                                    icon="fa fa-question-circle"
+                            />
+                        </p:commandButton>
                     </p:column>
                     <f:facet name="footer">
                         <h:outputFormat value="#{msg['app.ressource.count']}"><f:param value="#{ressource.ressources.size()}"/></h:outputFormat>
@@ -35,6 +56,9 @@
                 </p:dataTable>
             </h:form>
         </p:card>
+        <p:button outcome="ressourceType" value="#{msg['app.return']}">
+
+        </p:button>
     </ui:define>
 </ui:composition>
 
