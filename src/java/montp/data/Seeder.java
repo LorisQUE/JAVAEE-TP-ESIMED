@@ -89,6 +89,14 @@ public class Seeder {
             Ressource salleUn = new Ressource("Salle de Réunion", true, typeSalle, personUn);
             ressourceService.insert(salleUn);
 
+            RessourceType typeGeneration = new RessourceType("Génération", null);
+            ressourceTypeService.insert(typeGeneration);
+
+            for (int i = 0; i < 30; i++) {
+                Ressource ressourceGenere = new Ressource("GENERE " + i, true, typeGeneration, personUn);
+                ressourceService.insert(ressourceGenere);
+            }
+
             Ressource salleDeux = new Ressource("Salle de Formation", true, typeSalle, personDeux);
             ressourceService.insert(salleDeux);
 
