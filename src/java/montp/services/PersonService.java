@@ -6,9 +6,14 @@ import montp.tools.Tools;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @ApplicationScoped
 public class PersonService extends GenericService<Person, PersonDAO> {
+
+    public List<Person> getAll(){
+        return dao.getAll();
+    }
 
     @Transactional
     public void insert(Person person) {

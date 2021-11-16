@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./layout.xhtml">
+    <f:metadata>
+        <f:viewParam name="ressourceId" value="#{ressourceform.instance}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <p:card>
+            <f:facet name="title">#{msg['app.ressource.listTitle']}</f:facet>
+
+            <h:form id="frmRessource" rendered="#{ressourceform.instance != null}">
+                <p:growl/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="label" value="#{msg['app.ressource.label']}"/>
+                    <p:inputText id="label" value="#{ressourceform.instance.label}"
+                                 required="true"
+                                 requiredMessage="#{msg['app.ressource.labelRequired']}"/>
+
+                    <p:outputLabel for="chkShare" value="#{msg['app.ressource.shareable']}"/>
+                    <p:selectBooleanCheckbox id="chkShare" value="#{ressourceform.instance.shareable}" disabled="false"/>
+
+                    <p:outputLabel for="selectManager" value="#{msg['app.ressource.manager']}"/>
+                    <p:selectOneMenu id="selectManager" value="#{ressourceform.instance.manager}">
+                        <f:selectItems value="#{ressourceform.persons}" />
+                    </p:selectOneMenu>
+
+                    <p:commandButton value="#{msg['app.save']}"
+                                     action="#{ressourceform.save}"
+                                     />
+                </h:panelGrid>
+            </h:form>
+        </p:card>
+    </ui:define>
+</ui:composition>
+

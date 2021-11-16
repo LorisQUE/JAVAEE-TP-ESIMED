@@ -21,7 +21,7 @@ public class RessourceDAO extends GenericDAO<Ressource> {
 
     @SuppressWarnings("unchecked")
     public List<Ressource> getAllFromType(long id) {
-        return em.createQuery("SELECT r FROM Ressource r WHERE r.type =" + id + "ORDER BY r.label")
+        return em.createQuery("SELECT r FROM Ressource r WHERE r.type = " + id + " ORDER BY r.label")
                 .getResultList();
     }
 }

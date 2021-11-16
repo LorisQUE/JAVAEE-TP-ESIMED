@@ -28,14 +28,12 @@ public class RessourceView implements Serializable {
 
     @PostConstruct
     public void init() {
-        Logger.log(Logger.LogLevel.INFO, null, "long typeid" + typeId);
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        String typeId = params.get("typeId");
-        Logger.log(Logger.LogLevel.ERROR, RessourceView.class.getSimpleName(), "TYPE = " + typeId);
+        // TODO : Récupération des ressources par types
+        //Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        //String typeId = params.get("typeId");
         //type = ressourceType;
         //datas = ressourceService.getAllFromType(Long.parseLong(typeId));
         datas = ressourceService.getAll();
-        Logger.log(Logger.LogLevel.INFO, RessourceView.class.getSimpleName(), "initializing view controller :" + typeId);
     }
 
     public List<Ressource> getRessources() {

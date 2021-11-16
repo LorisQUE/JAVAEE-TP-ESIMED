@@ -9,7 +9,7 @@
               modal="true"
               closeOnEscape="true">
 
-        <h:form id="frmEditClub" rendered="#{ressourceTypeDialog.instance != null}">
+        <h:form id="frmRessourceType" rendered="#{ressourceTypeDialog.instance != null}">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="label" value="#{msg['app.ressourcetype.label']}"/>
                 <p:inputText id="label" value="#{ressourceTypeDialog.instance.label}"

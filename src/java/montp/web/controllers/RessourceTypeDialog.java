@@ -48,7 +48,7 @@ public class RessourceTypeDialog implements Serializable {
 
     // TODO: Dans le xhtml du dialog, le titre reste TOUJOURS a "nouveau type"
     public String getEditTitle(){
-        return String.format(message.get("app.ressourcetype.newTitle"), instance.toString());
+        return String.format(message.get("app.ressourcetype.editTitle"), instance.toString());
     }
 
 }
