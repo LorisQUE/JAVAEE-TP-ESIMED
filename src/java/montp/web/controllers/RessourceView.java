@@ -26,21 +26,20 @@ public class RessourceView implements Serializable {
     private RessourceType type;
     private List<Ressource> datas;
 
-    // TODO: Le init n'est jamais appelé ?
-    //  Les logs ne sont pas présent en tout cas et datas n'est jamais remplis
     @PostConstruct
-    public void init(RessourceType ressourceType) {
+    public void init() {
         Logger.log(Logger.LogLevel.INFO, null, "long typeid" + typeId);
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String typeId = params.get("typeId");
-        type = ressourceType;
+        Logger.log(Logger.LogLevel.ERROR, RessourceView.class.getSimpleName(), "TYPE = " + typeId);
+        //type = ressourceType;
+        //datas = ressourceService.getAllFromType(Long.parseLong(typeId));
         datas = ressourceService.getAll();
         Logger.log(Logger.LogLevel.INFO, RessourceView.class.getSimpleName(), "initializing view controller :" + typeId);
     }
 
     public List<Ressource> getRessources() {
-        return ressourceService.getAll();
-        //return datas;
+        return datas;
     }
 
     public RessourceType getType() {
