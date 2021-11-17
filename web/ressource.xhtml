@@ -12,6 +12,7 @@
             <f:facet name="title">#{msg['app.ressource.listTitle']}</f:facet>
             <p:growl/>
             <p:linkButton outcome="ressource_form" icon="fa fa-plus">
+                <f:param name="typeId" value="#{ressource.type.id}"/>
                 #{msg['app.ressource.new']}
             </p:linkButton>
 
@@ -33,8 +34,10 @@
 
                         <p:linkButton outcome="ressource_form" icon="fa fa-edit" styleClass="btn-space">
                             <f:param name="ressourceId" value="#{ress.id}"/>
+                            <f:param name="typeId" value="#{ressource.type.id}"/>
                         </p:linkButton>
 
+                        <!-- TODO : Seul le manager de la ressource peut delete, et uniquement si aucun résa en cours ou futur -->
                         <p:commandButton
                                 icon="fa fa-trash"
                                 styleClass="dataTableActions"

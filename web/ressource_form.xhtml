@@ -6,6 +6,7 @@
                 template="./layout.xhtml">
     <f:metadata>
         <f:viewParam name="ressourceId" value="#{ressourceform.instance}"/>
+        <f:viewParam name="typeId" value="#{ressourceform.type}"/>
     </f:metadata>
 
     <ui:define name="content">
@@ -28,9 +29,11 @@
                         <f:selectItems value="#{ressourceform.persons}" />
                     </p:selectOneMenu>
 
-                    <p:commandButton value="#{msg['app.save']}"
-                                     action="#{ressourceform.save}"
-                                     />
+                    <p:commandButton
+                            ajax="true"
+                            value="#{msg['app.save']}"
+                            action="#{ressourceform.save}"
+                    />
                 </h:panelGrid>
             </h:form>
         </p:card>

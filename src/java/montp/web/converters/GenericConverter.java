@@ -17,6 +17,7 @@ public class GenericConverter<T extends GenericEntity> implements Converter<T> {
 
     @Override
     public T getAsObject(FacesContext context, UIComponent component, String id) {
+        if(id.isEmpty()) return null;
         return dao.get(Integer.parseInt(id));
     }
 
