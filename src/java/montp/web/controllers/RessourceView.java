@@ -27,11 +27,8 @@ public class RessourceView implements Serializable {
     private RessourceType type;
     private List<Ressource> datas;
 
-    @PostConstruct
     public void init() {
-        // TODO : Récupération des ressources par types
-        //datas = ressourceService.getAllFromType(type.getId());
-        datas = ressourceService.getAll();
+        datas = ressourceService.getAllFromType(type);
     }
 
     public List<Ressource> getRessources() {

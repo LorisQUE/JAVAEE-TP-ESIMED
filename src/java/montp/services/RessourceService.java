@@ -23,5 +23,5 @@ public class RessourceService extends GenericService<Ressource, RessourceDAO>{
     public List<Ressource> getAll(){
         return dao.getAll();
     }
-    public List<Ressource> getAllFromType(long id){ return dao.getAllFromType(id); }
+    public List<Ressource> getAllFromType(RessourceType type){ return dao.getAllFromType(type); }
 }

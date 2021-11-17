@@ -6,7 +6,9 @@
                 template="./layout.xhtml">
     <f:metadata>
         <f:viewParam name="typeId" value="#{ressource.type}"/>
+        <f:event listener="#{ressource.init}" type="preRenderView"/>
     </f:metadata>
+
     <ui:define name="content">
         <p:card>
             <f:facet name="title">#{msg['app.ressource.listTitle']}</f:facet>

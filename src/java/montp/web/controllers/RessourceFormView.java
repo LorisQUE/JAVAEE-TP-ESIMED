@@ -41,7 +41,6 @@ public class RessourceFormView implements Serializable {
     }
 
     // TODO : Gérer la redirection sur la liste des ressources
-    //  Et faire l'ajout
     public void save() {
         Logger.log(Logger.LogLevel.INFO, RessourceView.class.getSimpleName(), "SAUVEGARDE");
         if (instance.getId() == null || instance.getId() == 0) {
